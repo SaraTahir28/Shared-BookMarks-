@@ -1,0 +1,25 @@
+{
+  "name": "shared-bookmarks-",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "As developers, we spend a lot of time reading articles on the web and we often want to record useful links to come back to them later. It is fun to share your bookmarks with others so that they can find interesting and useful links too.",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaraTahir28/Shared-BookMarks-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SaraTahir28/Shared-BookMarks-/issues"
+  },
+  "homepage": "https://github.com/SaraTahir28/Shared-BookMarks-#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}
+
