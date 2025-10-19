@@ -21,12 +21,6 @@ function populateUserDropdown() {
     userSelect.appendChild(option);
   });
 
-  // Set default user to first in the list (if exists)
-  if (users.length > 0) {
-    userSelect.value = users[0];
-    const initialBookmarks = getData(users[0]) || [];
-    renderBookmarks(initialBookmarks);
-  }
 }
 populateUserDropdown()
 // Render bookmarks for a given user
