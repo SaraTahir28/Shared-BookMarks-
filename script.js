@@ -20,15 +20,15 @@ function populateUserDropdown() {
     option.textContent = `User ${userId}`;
     userSelect.appendChild(option);
   });
-
 }
 populateUserDropdown()
+
 // Render bookmarks for a given user
-function renderBookmarks(bookmarks) {
-  bookmarkListSection.innerHTML = "";
+function renderBookmarks(bookmarks,container) {
+  container.innerHTML = "";
 
   if (!bookmarks || bookmarks.length === 0) {
-    bookmarkListSection.innerHTML = "<p>No bookmarks found for this user</p>";
+    container.innerHTML = "<p>No bookmarks found for this user</p>";
     return;
   }
 
@@ -56,7 +56,7 @@ function renderBookmarks(bookmarks) {
     list.appendChild(item);
   });
 
-  bookmarkListSection.appendChild(list);
+  container.appendChild(list);
 }
 
 // Handle form submission
@@ -86,7 +86,7 @@ function handleFormSubmit(event) {
   setData(userId, bookmarks);
 
   bookmarkForm.reset();
-  renderBookmarks(bookmarks);
+  renderBookmarks(bookmarks,bookmarkListSection);
 }
 
 
@@ -95,7 +95,7 @@ bookmarkForm.addEventListener("submit", handleFormSubmit);//bookmark eventlisten
 userSelect.addEventListener("change", () => { //userselect event listener
   const userId = userSelect.value;
   const bookmarks = getData(userId) || [];
-  renderBookmarks(bookmarks);
+  renderBookmarks(bookmarks,bookmarkListSection);
 });
 descriptionInput.addEventListener("keydown", (event) => { //descriptioninput event listener.
   if (event.key === "Enter" && !event.shiftKey) {
@@ -112,7 +112,7 @@ function resetAllUserData() {
 document.getElementById("resetDataBtn").addEventListener("click", () => {
   resetAllUserData();
   alert("All user data has been cleared.");
-  const bookmarkListSection = document.getElementById("bookmarkList"); //clear the current bookmarks display
   bookmarkListSection.innerHTML = "<p>Select a user to view their bookmarks.</p>";
 });
 
+export { renderBookmarks };
