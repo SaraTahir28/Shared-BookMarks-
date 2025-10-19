@@ -1,5 +1,5 @@
 
-import { getUserIds, getData, setData } from "./storage.js";
+import { getUserIds, getData, setData,clearData } from "./storage.js";
 
 const userSelect = document.getElementById("userSelect");
 const bookmarkListSection = document.getElementById("bookmarkList");
@@ -7,6 +7,7 @@ const bookmarkForm = document.getElementById("bookmarkForm");
 const urlInput = document.getElementById("urlInput");
 const titleInput = document.getElementById("titleInput");
 const descriptionInput = document.getElementById("descriptionInput");
+const resetDataBtn = document.getElementById("resetDataBtn")
 
 // Populate the user dropdown
 function populateUserDropdown() {
@@ -27,7 +28,7 @@ function populateUserDropdown() {
     renderBookmarks(initialBookmarks);
   }
 }
-
+populateUserDropdown()
 // Render bookmarks for a given user
 function renderBookmarks(bookmarks) {
   bookmarkListSection.innerHTML = "";
@@ -102,6 +103,15 @@ userSelect.addEventListener("change", () => {
   const bookmarks = getData(userId) || [];
   renderBookmarks(bookmarks);
 });
+function resetAllUserData() {
+  const users = getUserIds();
+  users.forEach(userId => clearData(userId));
+}
 
-// Initialize
-populateUserDropdown();
+document.getElementById("resetDataBtn").addEventListener("click", () => {
+  resetAllUserData();
+  alert("All user data has been cleared.");
+  const bookmarkListSection = document.getElementById("bookmarkList"); //clear the current bookmarks display
+  bookmarkListSection.innerHTML = "<p>Select a user to view their bookmarks.</p>";
+});
+
