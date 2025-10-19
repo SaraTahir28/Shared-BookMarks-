@@ -95,14 +95,21 @@ function handleFormSubmit(event) {
   renderBookmarks(bookmarks);
 }
 
-// Event listeners
-bookmarkForm.addEventListener("submit", handleFormSubmit);
 
-userSelect.addEventListener("change", () => {
+bookmarkForm.addEventListener("submit", handleFormSubmit);//bookmark eventlistener
+
+userSelect.addEventListener("change", () => { //userselect event listener
   const userId = userSelect.value;
   const bookmarks = getData(userId) || [];
   renderBookmarks(bookmarks);
 });
+descriptionInput.addEventListener("keydown", (event) => { //descriptioninput event listener.
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault(); // prevents creating a new line
+    bookmarkForm.requestSubmit(); // submits the form 
+  }
+});
+
 function resetAllUserData() {
   const users = getUserIds();
   users.forEach(userId => clearData(userId));
