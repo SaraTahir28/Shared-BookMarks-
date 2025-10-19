@@ -1,8 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <script type="module" src="script.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shared Bookmarks</title>
+    <script type="module" src="script.js" defer></script>
   </head>
+
   <body>
+    <h1>Shared Bookmarks</h1>
+
+    <!-- User selection -->
+    <label for="userSelect">Select User:</label>
+    <select id="userSelect">
+      <option value=""> Choose a user </option>
+    </select>
+
+    <!-- Bookmark list -->
+    <section id="bookmarkList">
+      <p>Select a user to view their bookmarks.</p>
+    </section>
+
+    <!--- Add new bookmark form -->
+    <h2>Add a new bookmark</h2>
+    <form id="bookmarkForm">
+      <label for="urlInput">URL:</label>
+      <input type="url" id="urlInput" required />
+
+      <label for="titleInput">Title:</label>
+      <input type="text" id="titleInput" required />
+
+      <label for="descriptionInput">Description:</label>
+      <textarea id="descriptionInput" required></textarea>
+
+      <button type="submit">Add Bookmark</button>
+    </form>
   </body>
 </html>
