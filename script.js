@@ -60,7 +60,7 @@ function renderBookmarks(bookmarks,container) {
 
 // Handle form submission
 function handleFormSubmit(event) {
-  event.preventDefault(); //preventing pagereload
+  event.preventDefault(); //preventing page reload
 
   const userId = userSelect.value; //validating all input are made.
   if (!userId) {
@@ -84,7 +84,7 @@ function handleFormSubmit(event) {
   bookmarks.push(newBookmark);
   setData(userId, bookmarks);
 
-  bookmarkForm.reset();
+  bookmarkForm.reset(); //reset all user inputs
   renderBookmarks(bookmarks,bookmarkListSection);//passing bookmarks section makes the function reusabale and flexible as we are not hardcoding the htmlelement inside the function.
 }
 //reset all user data

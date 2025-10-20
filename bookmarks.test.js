@@ -1,16 +1,16 @@
 /**
- * @jest-environment jsdom
+ * @jest-environment jsdom  //tells jest to use jsdom simulating a browser like DOM in node.js.
  */
 import { renderBookmarks } from "./script.js";
 describe("renderBookmarks", () => {
-  let container;
+  let container; //initiate container element which resets after each test- holds Dom element where we render bookmarks
 
-  beforeEach(() => {
-    document.body.innerHTML = `<section id="bookmarkList"></section>`;
+  beforeEach(() => {  //runs before each test
+    document.body.innerHTML = `<section id="bookmarkList"></section>`; //inserts a section element in document body and assigns it to the container.
     container = document.getElementById("bookmarkList");
   });
 
-  test("renders 'No bookmarks found' for empty array", () => {
+  test("renders 'No bookmarks found' for empty array", () => { //handles empty data correctly
     renderBookmarks([], container);
     expect(container.innerHTML).toContain("No bookmarks found for this user");
   });
@@ -22,7 +22,7 @@ describe("renderBookmarks", () => {
 
   renderBookmarks(bookmarks, container);
 
-  const links = container.querySelectorAll("a");
+  const links = container.querySelectorAll("a"); //selects all a elements in the container.
   expect(links[0].textContent).toBe("second"); // newest first
   expect(links[1].textContent).toBe("first");
 });
