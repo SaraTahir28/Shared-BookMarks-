@@ -1,4 +1,4 @@
-/* General */
+
 body {
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -7,13 +7,13 @@ body {
   color: #333;
 }
 
-/* Headings */
+
 h1, h2 {
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
-/* Form styling */
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -40,9 +40,10 @@ h1, h2 {
   resize: vertical;
 }
 
-/* Buttons */
+
 .btn {
   font-size: 14px;
+  font-weight: bold;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
@@ -51,21 +52,21 @@ h1, h2 {
 }
 
 .btn-submit {
-  background-color: #007bff;
-  color: white;
+  background-color: #afbfd0;
+  color: rgb(12, 1, 1);
   margin-top: 10px;
 }
 
 
 .btn-reset {
-  background-color: #35dcb5; /* red color for reset */
-  color: white;
+  background-color: #efe7e4; 
+  color: rgb(12, 0, 0);
   margin-top: 15px;
   padding: 10px 15px;
 }
 
 
-/* Bookmark list */
+
 .bookmark-list {
   list-style-type: none;
   padding-left: 0;
@@ -76,7 +77,7 @@ h1, h2 {
   margin-bottom: 10px;
 }
 
-/* Select spacing */
+
 .select-user {
   margin-bottom: 20px;
 }

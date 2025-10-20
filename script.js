@@ -1,6 +1,6 @@
 
-import { getUserIds, getData, setData,clearData } from "./storage.js";
-
+import { getUserIds, getData, setData,clearData } from "./storage.js"; //handle reading, writing, and clearing bookmarks in localStorage.
+//DOM references to key HTML elements so you can interact with them in JavaScript.
 const userSelect = document.getElementById("userSelect");
 const bookmarkListSection = document.getElementById("bookmarkList");
 const bookmarkForm = document.getElementById("bookmarkForm");
@@ -12,9 +12,9 @@ const resetDataBtn = document.getElementById("resetDataBtn")
 // Populate the user dropdown
 function populateUserDropdown() {
   const users = getUserIds();
-  userSelect.innerHTML = '<option value="">-- Select user --</option>';
+  userSelect.innerHTML = '<option value="">Select user</option>';
 
-  users.forEach((userId) => {
+  users.forEach((userId) => {  
     const option = document.createElement("option");
     option.value = userId;
     option.textContent = `User ${userId}`;
@@ -24,24 +24,24 @@ function populateUserDropdown() {
 
 // Render bookmarks for a given user
 function renderBookmarks(bookmarks,container) {
-  container.innerHTML = "";
+  container.innerHTML = ""; 
 
   if (!bookmarks || bookmarks.length === 0) {
-    container.innerHTML = "<p>No bookmarks found for this user</p>";
+    container.innerHTML = "<p>No bookmarks found for this user</p>"; //innerhtml because we want to insert and HTML P element and not simple text.
     return;
   }
 
   // Sort bookmarks in reverse chronological order
-  bookmarks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  bookmarks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); //createdAt is our ISOtimestamp string that we covert into a dateObject,if diff is +, b comes first else its a.
 
   const list = document.createElement("ul");
-  bookmarks.forEach((bookmark) => {
+  bookmarks.forEach((bookmark) => {    //loop through each bookmark array and for each create a li element.
     const item = document.createElement("li");
 
     const link = document.createElement("a");
     link.href = bookmark.url;
     link.textContent = bookmark.title || bookmark.url;
-    link.target = "_blank";
+    link.target = "_blank"; //blank is a target attribute that tells browser to open the link in new window.
 
     const description = document.createElement("p");
     description.textContent = bookmark.description;
@@ -60,9 +60,9 @@ function renderBookmarks(bookmarks,container) {
 
 // Handle form submission
 function handleFormSubmit(event) {
-  event.preventDefault();
+  event.preventDefault(); //preventing pagereload
 
-  const userId = userSelect.value;
+  const userId = userSelect.value; //validating all input are made.
   if (!userId) {
     alert("Please select a user before adding a bookmark.");
     return;
@@ -73,19 +73,19 @@ function handleFormSubmit(event) {
     return;
   }
 
-  const newBookmark = {
+  const newBookmark = { //creating a new bookmark object
     url: urlInput.value,
     title: titleInput.value,
     description: descriptionInput.value,
-    createdAt: new Date().toISOString(),
+    createdAt: new Date().toISOString(), 
   };
 
-  const bookmarks = getData(userId) || [];
+  const bookmarks = getData(userId) || []; //getting existing bookmarks from the user through local storage.
   bookmarks.push(newBookmark);
   setData(userId, bookmarks);
 
   bookmarkForm.reset();
-  renderBookmarks(bookmarks,bookmarkListSection);
+  renderBookmarks(bookmarks,bookmarkListSection);//passing bookmarks section makes the function reusabale and flexible as we are not hardcoding the htmlelement inside the function.
 }
 //reset all user data
 function resetAllUserData() {
@@ -103,9 +103,9 @@ if(userSelect)userSelect.addEventListener("change", () => {
     renderBookmarks(bookmarks, bookmarkListSection);
   });
 
-if(descriptionInput)descriptionInput.addEventListener("keydown", (event) => { //descriptioninput event listener.
-  if (event.key === "Enter" && !event.shiftKey) {
-    event.preventDefault(); // prevents creating a new line
+if(descriptionInput)descriptionInput.addEventListener("keydown", (event) => { //reacts when any key is pressed down
+  if (event.key === "Enter" && !event.shiftKey) { //also checks that shift is not pressed.
+    event.preventDefault(); // prevents creating a new line which is default behavior for an enter key.
     bookmarkForm.requestSubmit(); // submits the form 
   }
 });
