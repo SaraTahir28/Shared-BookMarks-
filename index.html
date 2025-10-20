@@ -12,30 +12,31 @@
     <h1>Shared Bookmarks</h1>
 
     <!-- User selection -->
-    <label for="userSelect">Select User:</label>
-    <select id="userSelect">
-      <option value=""> Choose a user </option>
+    <label for="userSelect" class="form-label">Select User:</label>
+    <select id="userSelect" class="select-user">
+      <option value="">Choose a user</option>
     </select>
 
     <!-- Bookmark list -->
-    <section id="bookmarkList" aria-live = "polite">
+    <section id="bookmarkList" aria-live="polite">
       <p>Select a user to view their bookmarks.</p>
     </section>
 
-    <!--- Add new bookmark form -->
+    <!-- Add new bookmark form -->
     <h2>Add a new bookmark</h2>
-    <form id="bookmarkForm">
-      <label for="urlInput">URL:</label>
-      <input type="url" id="urlInput" required />
+    <form id="bookmarkForm" class="form-container">
+      <label for="urlInput" class="form-label">URL:</label>
+      <input type="url" id="urlInput" class="form-input" required />
 
-      <label for="titleInput">Title:</label>
-      <input type="text" id="titleInput" required />
+      <label for="titleInput" class="form-label">Title:</label>
+      <input type="text" id="titleInput" class="form-input" required />
 
-      <label for="descriptionInput">Description:</label>
-      <textarea id="descriptionInput" required></textarea>
+      <label for="descriptionInput" class="form-label">Description:</label>
+      <textarea id="descriptionInput" class="form-input form-textarea" required></textarea>
 
-      <button type="submit">Add Bookmark</button>
+      <button type="submit" class="btn btn-submit">Add Bookmark</button>
     </form>
-     <button id="resetDataBtn" type="button">Reset All User Data</button>
+
+    <button id="resetDataBtn" type="button" class="btn btn-reset">Reset All User Data</button>
   </body>
 </html>
