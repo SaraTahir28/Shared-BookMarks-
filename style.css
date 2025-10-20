@@ -43,6 +43,7 @@ h1, h2 {
 /* Buttons */
 .btn {
   font-size: 14px;
+  font-weight: bold;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
@@ -51,15 +52,15 @@ h1, h2 {
 }
 
 .btn-submit {
-  background-color: #007bff;
-  color: white;
+  background-color: #afc0d3;
+  color: rgb(11, 0, 0);
   margin-top: 10px;
 }
 
 
 .btn-reset {
   background-color: #35dcb5; /* red color for reset */
-  color: white;
+  color: rgb(6, 0, 0);
   margin-top: 15px;
   padding: 10px 15px;
 }
