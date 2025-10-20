@@ -21,7 +21,6 @@ function populateUserDropdown() {
     userSelect.appendChild(option);
   });
 }
-populateUserDropdown()
 
 // Render bookmarks for a given user
 function renderBookmarks(bookmarks,container) {
@@ -88,31 +87,33 @@ function handleFormSubmit(event) {
   bookmarkForm.reset();
   renderBookmarks(bookmarks,bookmarkListSection);
 }
-
-
-bookmarkForm.addEventListener("submit", handleFormSubmit);//bookmark eventlistener
-
-userSelect.addEventListener("change", () => { //userselect event listener
-  const userId = userSelect.value;
-  const bookmarks = getData(userId) || [];
-  renderBookmarks(bookmarks,bookmarkListSection);
-});
-descriptionInput.addEventListener("keydown", (event) => { //descriptioninput event listener.
-  if (event.key === "Enter" && !event.shiftKey) {
-    event.preventDefault(); // prevents creating a new line
-    bookmarkForm.requestSubmit(); // submits the form 
-  }
-});
-
+//reset all user data
 function resetAllUserData() {
   const users = getUserIds();
   users.forEach(userId => clearData(userId));
 }
 
-document.getElementById("resetDataBtn").addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", () => {
+  populateUserDropdown()
+
+if(bookmarkForm)bookmarkForm.addEventListener("submit", handleFormSubmit);//bookmark eventlistener
+
+if(userSelect)userSelect.addEventListener("change", () => {
+  const bookmarks = getData(userSelect.value) || [];
+    renderBookmarks(bookmarks, bookmarkListSection);
+  });
+
+if(descriptionInput)descriptionInput.addEventListener("keydown", (event) => { //descriptioninput event listener.
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault(); // prevents creating a new line
+    bookmarkForm.requestSubmit(); // submits the form 
+  }
+});
+if(resetDataBtn)resetDataBtn.addEventListener("click", () => {
   resetAllUserData();
   alert("All user data has been cleared.");
   bookmarkListSection.innerHTML = "<p>Select a user to view their bookmarks.</p>";
 });
+})
 
-export { renderBookmarks };
+export { renderBookmarks,populateUserDropdown};
