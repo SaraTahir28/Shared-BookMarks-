@@ -93,7 +93,7 @@ function resetAllUserData() {
   users.forEach(userId => clearData(userId));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => { //Wrap DOM-dependent code in DOMContentLoaded → code runs only after the DOM exists → no null errors.
   populateUserDropdown()
 
 if(bookmarkForm)bookmarkForm.addEventListener("submit", handleFormSubmit);//bookmark eventlistener
