@@ -4,39 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shared Bookmarks</title>
-    <link rel="stylesheet" href="style.css">
     <script type="module" src="script.js" defer></script>
   </head>
 
-  <body>
-    <h1>Shared Bookmarks</h1>
+ <body>
+    <main>
+      <h1>Shared Bookmarks</h1>
 
-    <!-- User selection -->
-    <label for="userSelect" class="form-label">Select User:</label>
-    <select id="userSelect" class="select-user">
-      <option value="">Choose a user</option>
-    </select>
+      <!-- User selection -->
+      <div>
+        <label for="userSelect">Select User:</label><br>
+        <select id="userSelect" required
+          style="font-size:14px; padding:10px; width:50%; margin-bottom:20px;">
+          <option value="">Choose a user</option>
+        </select>
+      </div>
 
-    <!-- Bookmark list -->
-    <section id="bookmarkList" aria-live="polite">
-      <p>Select a user to view their bookmarks.</p>
-    </section>
+      <!-- Bookmark list -->
+      <section id="bookmarkList" aria-live="polite";
+      style="font-size: 16px;font-weight: bold;">
+        <p>Select a user to view their bookmarks.</p>
+      </section>
 
-    <!-- Add new bookmark form -->
-    <h2>Add a new bookmark</h2>
-    <form id="bookmarkForm" class="form-container">
-      <label for="urlInput" class="form-label">URL:</label>
-      <input type="url" id="urlInput" class="form-input" required />
+      <!-- Add new bookmark form -->
+      <h2>Add a Bookmark</h2>
+      <form id="bookmarkForm" style="display:flex; flex-direction:column; width:250px;">
+        
+        <div>
+          <label for="url" style="margin-bottom:5px;">URL:</label><br>
+          <input type="url" id="urlInput" required aria-required="true"
+            style="font-size:16px; padding:12px; width:100%; margin-bottom:15px;">
+        </div>
 
-      <label for="titleInput" class="form-label">Title:</label>
-      <input type="text" id="titleInput" class="form-input" required />
+        <div>
+          <label for="title" style="margin-bottom:5px;">Title:</label><br>
+          <input type="text" id="titleInput" required aria-required="true"
+            style="font-size:16px; padding:12px; width:100%; margin-bottom:15px;">
+        </div>
 
-      <label for="descriptionInput" class="form-label">Description:</label>
-      <textarea id="descriptionInput" class="form-input form-textarea" required></textarea>
+        <div>
+          <label for="description" style="margin-bottom:5px;">Description:</label><br>
+          <textarea id="descriptionInput" required aria-required="true"
+            style="font-size:16px; padding:12px; width:100%; height:80px; margin-bottom:15px;"></textarea>
+        </div>
 
-      <button type="submit" class="btn btn-submit">Add Bookmark</button>
-    </form>
+        <p>
+          <button type="submit" aria-label="Add Bookmark"
+            style="font-size:16px; padding:14px 20px; width:100%;">Add Bookmark</button>
+        </p>
 
-    <button id="resetDataBtn" type="button" class="btn btn-reset">Reset All User Data</button>
+        <p>
+          <button type="button" id="resetDataBtn"
+            style="font-size:16px; padding:14px 20px; width:100%;">Reset All User Data</button>
+        </p>
+
+      </form>
+    </main>
   </body>
 </html>
